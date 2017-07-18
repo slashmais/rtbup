@@ -1,0 +1,65 @@
+---------------------------------------------------------------------------------
+Compiling:
+----------
+To create and use rtbup, do the following:
+
+1. At a bash-prompt:
+	$ make clean
+	$ make
+
+2. Copy the executable to a directory where it will have write-access.
+	E.g.: /your-home-dir/bin
+
+3. Run rtbup once to create config- and log-files.
+
+4. Create backup directories where rtbup can write the backed-up files.
+
+5. Edit rtbup.config to add directories and backup-paths, and exclusion
+   wildcards. (See 'rtbup.config')
+
+6. Run rtbup in either the foreground or background. (See 'Usage' below)
+---------------------------------------
+---------------------------------------------------------------------------------
+Usage:
+------
+You need to edit the config file to add monitored directories, backup-paths,
+and exclusion file-wildcards. ("file-wildcards" is a comma-separated-list using,
+'*' and '?', for files NOT to be backed-up.) Note: It does not (yet?) recurse
+sub-dirs, and only backs-up changed files from the specified directory.
+Then either run rtbup from the command-line:
+
+	$ /-path-to-/rtbup
+
+or, to start rtbup as a background process use:
+
+	$ nohup /-path-to-/rtbup >/dev/null 2>&1 &
+
+or, if the installation directory is in your $PATH, you can simply use it's name:
+
+	$ rtbup
+or:
+	$ nohup rtbup >/dev/null 2>&1 &
+
+You can restart or stop the backgrounded instance by running rtbup in a
+console with the following commandline arguments:
+
+	$ /-path-to-/rtbup command
+
+Command    Description
+
+restart    this will cause the background process to reload monitor settings
+           from the configuration file and start any new monitors, or stop
+           removed ones.
+
+stop       this will cause the background process to stop all active monitors
+           and terminate.
+---------------------------------------
+---------------------------------------------------------------------------------
+Configuration: (See 'rtbup.config' for full details.)
+--------------
+Setting directories to be monitored:
+Format: monitor-path = backup-path | [ file-wildcards ]
+
+e.g.: /-path-to-some-/workdir = /-path-to-it's-/backupdir | [ *~, temp.* ]
+
+---------------------------------------
