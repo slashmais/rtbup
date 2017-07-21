@@ -14,7 +14,8 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with rtbup.  If not, see <http://www.gnu.org/licenses/>.
+    along with rtbup in a file named COPYING.
+    If not, see <http://www.gnu.org/licenses/>.
 ---------------------------------------------------------------------------------
 Compiling:
 ----------
